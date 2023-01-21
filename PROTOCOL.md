@@ -181,24 +181,25 @@ These are the possible icon values:
 | Value |Description       |
 |-------|------------------|
 | 0x00  | Sunny            |
-| 0x06  | Mostly Sunny     |
+| 0x01  | Mostly Sunny     |
+| 0x04  | Partly Cloudy    |
 | 0x08  | Mostly Cloudy    |
 | 0x??  | Cloudy           |
-| 0x??  | Patchy Rain      |
-| 0x??  | Mostly Rain      |
+| 0x??  | Patch rain       |
+| 0x??  | Mostly rain      |
 | 0x??  | Showers          |
-| 0x0D  | Heavy Rain       |
-| 0x10  | Thunder Rain     |
-| 0x??  | Rain & Hail      |
-| 0x??  | Hail             |
-| 0x??  | Snow & hail      |
-| 0x??  | Patchy snow      |
-| 0x??  | Mostly snow      |
-| 0x??  | Snow shower      |
+| 0x??  | Heavy rain       |
+| 0x10  | Thunder and rain |
+| 0x19  | Rain and hail    |
+| 0x17  | Hail             |
+| 0x??  | Snow and hail    |
+| 0x12  | Patchy snow      |
+| 0x14  | Mostly snow      |
+| 0x16  | Snow shower      |
 | 0x??  | Heavy snow       |
-| 0x??  | Rain & snow      |
+| 0x??  | Sleet            |
 | 0x??  | Foggy            |
-| 0x??  | Windy            |
+| 0x20  | Windy            |
 
 #### Temperature format
 Temperature is sent in Fahrenheit but the format is not straightforward. The data is stored as a UInt16 following the formula:
