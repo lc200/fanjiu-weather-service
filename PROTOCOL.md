@@ -184,21 +184,21 @@ These are the possible icon values:
 | 0x01  | Mostly Sunny     |
 | 0x04  | Partly Cloudy    |
 | 0x08  | Mostly Cloudy    |
-| 0x??  | Cloudy           |
-| 0x??  | Patch rain       |
-| 0x??  | Mostly rain      |
-| 0x??  | Showers          |
-| 0x??  | Heavy rain       |
+| 0x0A  | Cloudy           |
+| 0x0B  | Patch rain       |
+| 0x0C  | Mostly rain      |
+| 0x0F  | Showers          |
+| 0x0D  | Heavy rain       |
 | 0x10  | Thunder and rain |
 | 0x19  | Rain and hail    |
 | 0x17  | Hail             |
-| 0x??  | Snow and hail    |
+| 0x1B  | Snow and hail    |
 | 0x12  | Patchy snow      |
 | 0x14  | Mostly snow      |
 | 0x16  | Snow shower      |
-| 0x??  | Heavy snow       |
-| 0x??  | Sleet            |
-| 0x??  | Foggy            |
+| 0x14  | Heavy snow       |
+| 0x1A  | Sleet            |
+| 0x1C  | Foggy            |
 | 0x20  | Windy            |
 
 #### Temperature format
