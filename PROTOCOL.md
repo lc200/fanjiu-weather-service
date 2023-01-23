@@ -63,8 +63,8 @@ The payload looks like this:
  0                 1                   2                   3
  1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|       Id      |            Country            |               |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+               +
+|       Id      |     Country   |                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               +
 |                              Date                             |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |                Unknown                |       Feels like      |
@@ -83,9 +83,9 @@ The payload looks like this:
 
 Where: 
 * **ID:** (8bits) is... not too sure about this one. It's always set to 0x01 so I expected it to be some kind of ID in case multiple weather station share the same MAC? It's safe to assume this to be a costant 0x01
-* **Country:** (16bits)  is the code identifying the country where the Weather station resides. See below for values.
-* **Date:** (40bits) is the current date displayed in the top left corner. See below for the format.
-* **Feels like:** (16bits) is the "feels like" temperature displayed in the top right corner of the weather station. See "temperature format" for more info.
+* **Country:** (8bits)  is the code identifying the country where the Weather station resides. See below for values.
+* **Date:** (48bits) is the current date displayed in the top left corner. See below for the format.
+* **Feels like:** (16bits) is the "feels like" temperature displayed in the top right corner of the weather station. See "temperature format" for more info.  Send as whole numbers only, whilst decimals are accepted they are dropped rather than rounded and gives rise to odd things like -0.1 feels like showing as feels like -0.
 * **Pressure:** (16bits) is the pressure in hpa. See floating point format.
 * **Wind speed:** (16bits)  is the wind speed in km/h. See floating point format.
 * **Wind direction:** (8bits) is the direction of the wind displayed in the clock like wind gauge on the left on the display.
@@ -98,16 +98,14 @@ Where:
 | 0x1413  | China        |
 
 ### Date format
-The date is encoded over 40bits in the following format:
+The date is encoded over 48bits in the following format:
 ```
- 0                 1                   2                   3                   4
- 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|     Month     |     Day       |      Hour     |    Minutes    |     Seconds   |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ 0                 1                   2                   3                   4               
+ 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|      Year     |     Month     |     Day       |      Hour     |    Minutes    |     Seconds   |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
-There is no concept of year because it's not displayed anyway.
-
 *NOTE:* The date/time is sent twice: once on the current weather and once on the forecast request. It's not clear to me which one is picked up but I
         expect to be the first one
 
