@@ -94,8 +94,8 @@ Where:
 #### Country List
 | Value   | Description  |
 |---------|--------------|
-| 0x130c  | UK           |
-| 0x1413  | China        |
+| 0x13    | UK           |
+| 0x14    | China        |
 
 ### Date format
 The date is encoded over 48bits in the following format:
